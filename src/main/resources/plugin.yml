@@ -1,0 +1,47 @@
+name: BashCraft
+version: '${version}'
+main: io.github.Earth1283.bashCraft.BashCraft
+api-version: '1.21'
+authors: [ Earth1283 ]
+description: Linux terminal emulator for Minecraft — coreutils in a block game
+
+permissions:
+  bashcraft.*:
+    description: Grant all BashCraft permissions
+    default: op
+    children:
+      bashcraft.kill: true
+      bashcraft.kill.self: true
+      bashcraft.sudo: true
+      bashcraft.shutdown: true
+      bashcraft.fs: true
+      bashcraft.fs.write: true
+      bashcraft.fs.curl: true
+
+  bashcraft.kill:
+    description: Can kill players and entities
+    default: op
+
+  bashcraft.kill.self:
+    description: Can use kill command on self only
+    default: true
+
+  bashcraft.sudo:
+    description: Can use sudo to run commands as console
+    default: op
+
+  bashcraft.shutdown:
+    description: Can shut down the server
+    default: op
+
+  bashcraft.fs:
+    description: Can enter real server filesystem mode (/fs on)
+    default: op
+
+  bashcraft.fs.write:
+    description: Can write/delete real files (rm, mv, cp, touch, mkdir, curl -o)
+    default: op
+
+  bashcraft.fs.curl:
+    description: Can use curl to fetch remote URLs
+    default: op
