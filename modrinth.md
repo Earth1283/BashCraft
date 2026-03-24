@@ -146,6 +146,65 @@ All commands are usable from both in-game and the server console.
 
 ---
 
+## Configuration
+
+On first start, `plugins/bashCraft/bashcraftrc` is created automatically. Edit it and restart to apply changes. The format uses shell-like `export`/`alias` syntax — consistent with the plugin's own commands.
+
+### Session behavior
+
+| Key | Default | Description |
+|---|---|---|
+| `history_size` | `500` | Max commands kept per player session |
+| `history_default_lines` | `50` | Lines shown by `history` with no argument |
+| `prompt_mode` | `false` | Show `user@bashcraft:path$` after every command |
+
+### Spam & output guards
+
+| Key | Default | Description |
+|---|---|---|
+| `clear_lines` | `50` | Blank lines `clear` sends to push chat off-screen (max 200) |
+| `yes_limit` | `20` | Max lines `yes` outputs (max 100) |
+| `banner_max_chars` | `12` | Max characters `banner` renders as ASCII art (max 20) |
+| `cowsay_wrap_width` | `38` | Characters per line before cowsay wraps (10–60) |
+| `pipe_max_stages` | `10` | Max pipe stages per command (`0` = unlimited) |
+
+### Feature toggles
+
+| Key | Default | Description |
+|---|---|---|
+| `fortune_enabled` | `true` | Enable or disable the `fortune` command |
+
+### Color scheme
+
+Customize the terminal colors using any Minecraft `NamedTextColor` name (`RED`, `GREEN`, `AQUA`, `GOLD`, `YELLOW`, `WHITE`, `GRAY`, `DARK_GRAY`, etc.).
+
+| Key | Default | Used for |
+|---|---|---|
+| `color_error` | `RED` | Error messages |
+| `color_success` | `GREEN` | Success messages |
+| `color_directory` | `AQUA` | Directory names |
+| `color_header` | `YELLOW` | Section headers |
+| `color_warning` | `GOLD` | Warnings |
+| `color_info` | `WHITE` | General info |
+| `color_dim` | `DARK_GRAY` | Secondary metadata |
+
+### Default env vars & aliases
+
+```bash
+# Environment variables applied to every new session
+export EDITOR=vi
+export SHELL=/bin/bash
+export TERM=xterm-256color
+export LANG=en_US.UTF-8
+
+# Aliases available to all players
+alias ll=ls -la
+alias la=ls -a
+alias grep=grep --color=auto
+```
+
+---
+
 ## First boot Easter egg
 
 The first time BashCraft loads on a server, your `$USER` is set to `linus`. After that, it's `root`. You know why.

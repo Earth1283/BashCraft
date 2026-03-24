@@ -1,5 +1,6 @@
 package io.github.Earth1283.bashCraft.commands
 
+import io.github.Earth1283.bashCraft.BashCraftConfig
 import io.github.Earth1283.bashCraft.CommandRegistry
 import io.github.Earth1283.bashCraft.SessionManager
 import io.github.Earth1283.bashCraft.TerminalSession
@@ -36,6 +37,12 @@ abstract class LinuxCommand(
 
         // Split on "|" to build pipeline stages
         val stages = splitPipes(commandLabel, args, session)
+
+        val maxStages = BashCraftConfig.pipeMaxStages
+        if (maxStages > 0 && stages.size > maxStages) {
+            sender.sendMessage(Term.err("pipeline too long (max $maxStages stages)"))
+            return true
+        }
 
         var pipeInput: List<String>? = null
 

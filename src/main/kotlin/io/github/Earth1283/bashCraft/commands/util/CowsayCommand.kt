@@ -1,5 +1,6 @@
 package io.github.Earth1283.bashCraft.commands.util
 
+import io.github.Earth1283.bashCraft.BashCraftConfig
 import io.github.Earth1283.bashCraft.TerminalSession
 import io.github.Earth1283.bashCraft.commands.LinuxCommand
 import org.bukkit.command.CommandSender
@@ -30,7 +31,7 @@ class CowsayCommand : LinuxCommand("cowsay", "Configurable speaking cow", "cowsa
         }
 
         val text = (pipedInput?.joinToString(" ") ?: rest.joinToString(" ")).ifEmpty { "..." }
-        val wordWrap = text.chunked(38)
+        val wordWrap = text.chunked(BashCraftConfig.cowsayWrapWidth)
         val width = wordWrap.maxOf { it.length }
         val border = "-".repeat(width + 2)
 

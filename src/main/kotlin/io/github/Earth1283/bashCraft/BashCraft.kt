@@ -13,6 +13,9 @@ class BashCraft : JavaPlugin() {
         startTime = System.currentTimeMillis()
         instance = this
 
+        saveResource("bashcraftrc", false)
+        BashCraftConfig.load(dataFolder)
+
         // Register player session listener
         server.pluginManager.registerEvents(SessionManager, this)
 

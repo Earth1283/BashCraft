@@ -1,5 +1,6 @@
 package io.github.Earth1283.bashCraft.commands.util
 
+import io.github.Earth1283.bashCraft.BashCraftConfig
 import io.github.Earth1283.bashCraft.TerminalSession
 import io.github.Earth1283.bashCraft.commands.LinuxCommand
 import org.bukkit.command.CommandSender
@@ -55,7 +56,7 @@ class BannerCommand : LinuxCommand("banner", "Display text as large ASCII art", 
     override fun run(sender: CommandSender, args: Array<String>, session: TerminalSession, pipedInput: List<String>?): List<String> {
         val text = (pipedInput?.firstOrNull() ?: args.joinToString(" ")).uppercase()
         if (text.isBlank()) return listOf("banner: no text")
-        if (text.length > 12) return listOf("banner: text too long (max 12 chars for readability)")
+        if (text.length > BashCraftConfig.bannerMaxChars) return listOf("banner: text too long (max ${BashCraftConfig.bannerMaxChars} chars for readability)")
 
         val chars = text.map { c -> FONT[c] ?: FONT['?']!! }
         val rows = (0 until 5).map { row ->

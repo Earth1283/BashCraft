@@ -19,7 +19,81 @@ A Paper 1.21 plugin that emulates a Linux terminal inside Minecraft. Every Unix 
 # Output: build/libs/BashCraft-1.0.jar
 ```
 
-Drop the JAR into `plugins/`. No configuration file is required.
+Drop the JAR into `plugins/`. On first start, `plugins/bashCraft/bashcraftrc` is created automatically with all defaults.
+
+---
+
+## Configuration
+
+Edit `plugins/bashCraft/bashcraftrc` and restart the server to apply changes. The file uses shell-like syntax matching the plugin's own `export`/`alias` commands.
+
+### Session behavior
+
+| Key | Default | Description |
+|---|---|---|
+| `history_size` | `500` | Max commands kept per player session |
+| `history_default_lines` | `50` | Lines shown by `history` when no argument is given |
+| `prompt_mode` | `false` | Show `user@bashcraft:path$` after every command |
+
+### Spam / output guards
+
+| Key | Default | Range | Description |
+|---|---|---|---|
+| `clear_lines` | `50` | 1–200 | Blank lines sent by `clear` to push chat off-screen |
+| `yes_limit` | `20` | 1–100 | Max lines `yes` outputs before stopping |
+| `banner_max_chars` | `12` | 1–20 | Max characters `banner` will render as ASCII art |
+| `cowsay_wrap_width` | `38` | 10–60 | Characters per line before cowsay wraps text |
+| `pipe_max_stages` | `10` | 0 = unlimited | Max `|`-separated stages in a single command |
+
+### Feature toggles
+
+| Key | Default | Description |
+|---|---|---|
+| `fortune_enabled` | `true` | Enable or disable the `fortune` command |
+
+### Color scheme
+
+All values are Minecraft `NamedTextColor` names: `BLACK`, `DARK_BLUE`, `DARK_GREEN`, `DARK_AQUA`, `DARK_RED`, `DARK_PURPLE`, `GOLD`, `GRAY`, `DARK_GRAY`, `BLUE`, `GREEN`, `AQUA`, `RED`, `LIGHT_PURPLE`, `YELLOW`, `WHITE`.
+
+| Key | Default | Used for |
+|---|---|---|
+| `color_error` | `RED` | Error messages (`bash: command not found`, etc.) |
+| `color_success` | `GREEN` | Success / ok messages |
+| `color_directory` | `AQUA` | Directory names and entries |
+| `color_header` | `YELLOW` | Section headers in command output |
+| `color_warning` | `GOLD` | Warning messages |
+| `color_info` | `WHITE` | General informational text |
+| `color_dim` | `DARK_GRAY` | Secondary metadata (`total N`, etc.) |
+
+### Default environment variables
+
+Set using `export KEY=VALUE`. These are applied to every new session. `USER` and `HOME` are always overridden per-player on join and should not be set here.
+
+```bash
+export SHELL=/bin/bash
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export EDITOR=vi
+export TERM=xterm-256color
+export LANG=en_US.UTF-8
+```
+
+### Default aliases
+
+Set using `alias NAME=CMD`. The value is everything after `=`, so multi-word values like `ls -la` work without quoting.
+
+```bash
+alias ll=ls -la
+alias la=ls -a
+alias l=ls -CF
+alias grep=grep --color=auto
+```
+
+### Error handling
+
+- Unknown keys log a `WARNING` and are skipped — the plugin still starts.
+- Invalid color names fall back to `GRAY` and log a warning.
+- Numeric values outside their valid range are clamped silently.
+- If the file is deleted, all settings revert to the hardcoded defaults on next start.
 
 ---
 

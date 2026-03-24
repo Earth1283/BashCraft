@@ -1,5 +1,6 @@
 package io.github.Earth1283.bashCraft.commands.util
 
+import io.github.Earth1283.bashCraft.BashCraftConfig
 import io.github.Earth1283.bashCraft.TerminalSession
 import io.github.Earth1283.bashCraft.commands.LinuxCommand
 import org.bukkit.command.CommandSender
@@ -40,6 +41,7 @@ class FortuneCommand : LinuxCommand("fortune", "Print a random fortune", "fortun
     )
 
     override fun run(sender: CommandSender, args: Array<String>, session: TerminalSession, pipedInput: List<String>?): List<String> {
+        if (!BashCraftConfig.fortuneEnabled) return listOf("bash: fortune: command not found")
         return listOf(fortunes.random())
     }
 }

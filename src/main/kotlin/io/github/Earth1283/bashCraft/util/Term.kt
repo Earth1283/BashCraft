@@ -1,5 +1,6 @@
 package io.github.Earth1283.bashCraft.util
 
+import io.github.Earth1283.bashCraft.BashCraftConfig
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.TextDecoration
@@ -11,25 +12,25 @@ object Term {
         Component.text(text, NamedTextColor.GRAY)
 
     fun err(text: String): Component =
-        Component.text("bash: $text", NamedTextColor.RED)
+        Component.text("bash: $text", BashCraftConfig.colorError)
 
     fun ok(text: String): Component =
-        Component.text(text, NamedTextColor.GREEN)
+        Component.text(text, BashCraftConfig.colorSuccess)
 
     fun dir(text: String): Component =
-        Component.text(text, NamedTextColor.AQUA).decorate(TextDecoration.BOLD)
+        Component.text(text, BashCraftConfig.colorDirectory).decorate(TextDecoration.BOLD)
 
     fun hdr(text: String): Component =
-        Component.text(text, NamedTextColor.YELLOW).decorate(TextDecoration.BOLD)
+        Component.text(text, BashCraftConfig.colorHeader).decorate(TextDecoration.BOLD)
 
     fun warn(text: String): Component =
-        Component.text(text, NamedTextColor.GOLD)
+        Component.text(text, BashCraftConfig.colorWarning)
 
     fun info(text: String): Component =
-        Component.text(text, NamedTextColor.WHITE)
+        Component.text(text, BashCraftConfig.colorInfo)
 
     fun dim(text: String): Component =
-        Component.text(text, NamedTextColor.DARK_GRAY)
+        Component.text(text, BashCraftConfig.colorDim)
 
     fun prompt(name: String, path: String): Component =
         Component.text(name, NamedTextColor.GREEN, TextDecoration.BOLD)
