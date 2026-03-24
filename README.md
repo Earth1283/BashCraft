@@ -54,7 +54,7 @@ src/main/kotlin/io/github/Earth1283/bashCraft/
 
 `LinuxCommand.execute()` checks `session.fsMode` and dispatches to either `run()` (Minecraft virtual FS) or `runFs()` (real `java.nio.file.Path` operations). The default `runFs()` delegates to `run()`, so pure text-processing commands (grep, head, sort, etc.) work identically in both modes without any override.
 
-Commands that need genuinely different FS behaviour (`ls`, `cd`, `cat`, `find`, `stat`, `du`) override `runFs()` explicitly. FS-only commands (`mv`, `cp`, `rm`, `touch`, `mkdir`, `curl`) keep an error-returning `run()` and a real `runFs()`.
+Commands that need genuinely different FS behavior (`ls`, `cd`, `cat`, `find`, `stat`, `du`) override `runFs()` explicitly. FS-only commands (`mv`, `cp`, `rm`, `touch`, `mkdir`, `curl`) keep an error-returning `run()` and a real `runFs()`.
 
 ### Pipe operator
 
