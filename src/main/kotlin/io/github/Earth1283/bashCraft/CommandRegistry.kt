@@ -23,7 +23,7 @@ object CommandRegistry {
         field.isAccessible = true
         val map = field.get(Bukkit.getServer()) as SimpleCommandMap
 
-        // Pinnacle of human programmimg
+        // Pinnacle of human programming
         val linuxCommands: List<LinuxCommand> = listOf(
             // Filesystem (dual-mode)
             LsCommand(), PwdCommand(), CdCommand(), CatCommand(), FindCommand(), StatCommand(),
