@@ -3,22 +3,22 @@
 #         KEY=VALUE for plugin settings.  Restart server to apply changes.
 # NOTE: USER and HOME are always overridden per-player on join — don't set them here.
 
-# ── Session behavior ──────────────────────────────────────────────────────────
+# -- Session behavior ----------------------------------------------------------
 history_size=500         # max commands kept per-session (memory)
 history_default_lines=50 # lines shown by `history` when no arg given
 prompt_mode=false        # show user@bashcraft:path$ after every command
 
-# ── Spam / output guards ──────────────────────────────────────────────────────
+# -- Spam / output guards ------------------------------------------------------
 clear_lines=50           # blank lines sent by `clear` to push chat off-screen
 yes_limit=20             # max lines `yes` outputs before stopping
 banner_max_chars=12      # max characters `banner` will render as ASCII art
 cowsay_wrap_width=38     # characters per line before cowsay wraps text
 pipe_max_stages=10       # max pipe stages in a single command (0 = unlimited)
 
-# ── Feature toggles ───────────────────────────────────────────────────────────
+# -- Feature toggles -----------------------------------------------------------
 fortune_enabled=true     # enable/disable the `fortune` command
 
-# ── Color scheme (Minecraft NamedTextColor names) ─────────────────────────────
+# -- Color scheme (Minecraft NamedTextColor names) -----------------------------
 # Valid values: BLACK, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE,
 #               GOLD, GRAY, DARK_GRAY, BLUE, GREEN, AQUA, RED, LIGHT_PURPLE,
 #               YELLOW, WHITE
@@ -30,14 +30,14 @@ color_warning=GOLD
 color_info=WHITE
 color_dim=DARK_GRAY
 
-# ── Default environment variables ─────────────────────────────────────────────
+# -- Default environment variables ---------------------------------------------
 export SHELL=/bin/bash
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export EDITOR=vi
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
 
-# ── Default aliases ────────────────────────────────────────────────────────────
+# -- Default aliases ------------------------------------------------------------
 alias ll=ls -la
 alias la=ls -a
 alias l=ls -CF
