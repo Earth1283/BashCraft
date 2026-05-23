@@ -1,6 +1,6 @@
 # BashCraft
 
-A Paper 1.21 plugin that emulates a Linux terminal inside Minecraft. Every Unix coreutil is a Minecraft command. Worlds are filesystems. Players are processes. Entities are files.
+A Paper 1.21+ plugin that emulates a Linux terminal inside Minecraft. Every Unix coreutil is a Minecraft command. Worlds are filesystems. Players are processes (which are, in turn, files). Entities are files.
 
 ---
 
