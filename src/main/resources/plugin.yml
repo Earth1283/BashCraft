@@ -17,6 +17,7 @@ permissions:
       bashcraft.fs: true
       bashcraft.fs.write: true
       bashcraft.fs.curl: true
+      bashcraft.fs.wget: true
 
   bashcraft.kill:
     description: Can kill players and entities
@@ -44,4 +45,8 @@ permissions:
 
   bashcraft.fs.curl:
     description: Can use curl to fetch remote URLs
+    default: op
+
+  bashcraft.fs.wget:
+    description: Can use wget to download remote URLs
     default: op
