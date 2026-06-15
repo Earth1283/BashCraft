@@ -28,7 +28,7 @@ object CommandRegistry {
             // Filesystem (dual-mode)
             LsCommand(), PwdCommand(), CdCommand(), CatCommand(), FindCommand(), StatCommand(),
             // FS-mode-only
-            MvCommand(), CpCommand(), TouchCommand(), RmCommand(), MkdirCommand(), CurlCommand(),
+            MvCommand(), CpCommand(), TouchCommand(), RmCommand(), MkdirCommand(), CurlCommand(), WgetCommand(),
             // System info
             PsCommand(), TopCommand(), FreeCommand(), UnameCommand(), UptimeCommand(), DfCommand(), DuCommand(),
             // User/identity
